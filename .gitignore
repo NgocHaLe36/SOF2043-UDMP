@@ -1,0 +1,23 @@
+# Java class files
+*.class
+
+# Log files
+*.log
+
+# Maven
+target/
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Error logs
+hs_err_pid*
