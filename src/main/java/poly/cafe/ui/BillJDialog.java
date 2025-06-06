@@ -316,7 +316,35 @@ public class BillJDialog extends JDialog implements BillController {
         );
 
         pack();
+        this.fillBillDetails();
+        this.initLoadDataField();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void initLoadDataField() {
+        var listBills = this.billDetailDao.getBills();
+        if (listBills != null && !listBills.isEmpty()) {
+            // lấy dữ liệu đầu tiên để hiển thị
+            Bill firstBill = listBills.get(0);
+
+            txtId.setText(String.valueOf(firstBill.getId()));
+            txtCardId.setText("Card #" + firstBill.getCardId());
+            txtCheckin.setText(XDate.format(firstBill.getCheckin(), "HH:mm:ss dd-MM-yyyy"));
+            txtCheckout.setText(firstBill.getCheckout() != null
+                    ? XDate.format(firstBill.getCheckout(), "HH:mm:ss dd-MM-yyyy")
+                    : "");
+            txtUsername.setText(firstBill.getUsername());
+            String[] statuses = { "Servicing", "Completed", "Canceled" };
+            txtStatus.setText(statuses[firstBill.getStatus()]);
+        } else {
+            txtId.setText("");
+            txtCardId.setText("");
+            txtCheckin.setText("");
+            txtCheckout.setText("");
+            txtUsername.setText("");
+            txtStatus.setText("");
+        }
+
+    }
 
     private void tblBillDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBillDetailsMouseClicked
         if (evt.getClickCount() == 2) {

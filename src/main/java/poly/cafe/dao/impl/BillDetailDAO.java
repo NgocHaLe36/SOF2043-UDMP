@@ -5,6 +5,8 @@
 package poly.cafe.dao.impl;
 
 import java.util.List;
+
+import poly.cafe.entity.Bill;
 import poly.cafe.entity.BillDetail;
 
 /**
@@ -14,6 +16,8 @@ import poly.cafe.entity.BillDetail;
 public interface BillDetailDAO extends CrudDAO<BillDetail, Long> {
 
     List<BillDetail> findByBillId(Long billId);
+    List<Bill> getBills();
+
 
     List<BillDetail> findByDrinkId(String drinkId);
     BillDetailDAO billDetailDao = new BillDetailDAOImpl(); // hoặc inject từ nơi khác
